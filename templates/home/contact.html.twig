@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  La Regina | Contact
+{% endblock %}
+
+{% block content %}
+        <section class="card" id="contact">
+            <section class="contact-restaurant">
+                <h3>Our restaurant:</h3>
+                <hr>
+                <article>
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        alt="restaurant" class="contact-img">
+                    <div class="info-rest">
+                        <h4>La Regine NYC</h4>
+                        <p>644 Brown Plaza Suite 369</p>
+                        <p>New York City - 88300-0562</p>
+                    </div>
+                </article>
+                <article>
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        alt="restaurant" class="contact-img">
+                    <div class="info-rest">
+                        <h4>La Regina</h4>
+                        <p>Incrocio Farina 27</p>
+                        <p>Bilzen - 97613, Italia</p>
+                    </div>
+                </article>
+            </section>
+            <section class="contact-form">
+            {% for message in app.flashes('success') %}
+                <div style="color: green;" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form_start(form) }}
+
+            {{ form_end(form) }}
+                {# <h2>Contact Us</h2>
+                <hr>
+                <form action="">
+                    <label for="name">Your Name:</label>
+                    <input type="text" name="name" id="">
+                    <label for="lastname">Your Last Name:</label>
+                    <input type="text" name="lastname" id="">
+
+                    <label for="email">Your email:</label>
+                    <input type="email" name="email" id="">
+
+                    <label for="object">Object:</label>
+                    <label for="message"></label>
+                    <textarea name="message" id="" cols="30" rows="10"></textarea>
+                </form> #}
+            </section>
+{% endblock %}

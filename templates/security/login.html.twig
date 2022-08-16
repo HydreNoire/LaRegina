@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/app.js" defer></script>
+    <link rel="stylesheet" href="/css/scroll.css" />
+    <script src="https://kit.fontawesome.com/fd713c2769.js"
+      crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap"
+      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap"
+      rel="stylesheet" />
+    <title>
+      Regina | Admin Auth
+    </title>
+  </head>
+  <body>
+    <div class="cursor"></div>
+    <header>
+      <span class="logo">La Regina</span>
+    </header>
+
+    <main>
+      <section class="card" id="login-admin">
+        <form method="post">
+          {% if error %}
+            <div class="alert alert-danger">
+              {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+          {% endif %}
+
+          {% if app.user %}
+            <div class="mb-3">
+              You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+          {% endif %}
+
+          <h1 class="h3 mb-3 font-weight-normal">
+            Please sign in
+          </h1>
+          <label for="inputEmail">Email</label>
+          <input type="email"
+            value="{{ last_username }}"
+            name="email"
+            id="inputEmail"
+            class="form-control"
+            autocomplete="email"
+            required
+            autofocus />
+          <label for="inputPassword">Password</label>
+          <input type="password"
+            name="password"
+            id="inputPassword"
+            class="form-control"
+            autocomplete="current-password"
+            required />
+
+          <input type="hidden"
+            name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}" />
+          <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+        </form>
+        <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+          alt="restaurant"
+          class="presentation-img" />
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        La Regina
+      {% endblock %}
+    </title>
+    <link rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+    <script src="/js/app.js" defer></script>
+    <link rel="stylesheet" href="/css/scroll.css" />
+    <script src="https://kit.fontawesome.com/fd713c2769.js"
+      crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap"
+      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="cursor"></div>
+    <header>
+      <span class="logo">La Regina</span>
+      <ul>
+        <li class="menu-item"><a href="{{ path('app_home') }}">Home</a></li>
+        <li class="menu-item"><a href="{{ path('app_about') }}">About</a></li>
+        <li class="menu-item"><a href="{{ path('app_menu') }}">Menu</a></li>
+        <li class="menu-item">
+          <a href="{{ path('app_contact') }}">Contact</a>
+        </li>
+        {% if is_granted('ROLE_ADMIN') %}
+          <li class="menu-item"><a href="{{ path('admin') }}">Dashboard</a></li>
+          <li class="menu-item">
+            <a href="{{ path('app_logout') }}">Logout</a>
+          </li>
+        {% endif %}
+      </ul>
+    </header>
+    <main class="scrollable-div">
+      {# <div class="btn-card-next">
+        ›
+      </div>
+      <div class="btn-card-prev">
+        ‹
+      </div> #}
+      {% block content %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+      {% endblock %}
+    </main>
+  </body>
 </html>

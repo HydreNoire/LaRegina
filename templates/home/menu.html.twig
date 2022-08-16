@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  La Regina | Menu
+{% endblock %}
+
+{% block content %}
+  <section class="card" id="menu">
+    <div class="appetizers">
+      <h2>
+        Appetizers
+      </h2>
+      <hr />
+      {% for appetizer in appetizers %}
+        <article class="recipe">
+          <img src="/assets/{{ appetizer.picture }}"
+            alt="healthy food"
+            class="menu-img" />
+          <div class="name-info-meal">
+            <h3>
+              {{ appetizer.name }}
+            </h3>
+            <small>{{ appetizer.description }}</small>
+          </div>
+          <p class="price">
+            {{
+              appetizer.price|format_currency(
+                'USD',
+                {
+                  decimal_always_shown: 2
+                }
+              )
+            }}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class="meal">
+      <h2>
+        Meal
+      </h2>
+      <hr />
+      {% for meal in meals %}
+        <article class="recipe">
+          <img src="/assets/{{ meal.picture }}"
+            alt="healthy food"
+            class="menu-img" />
+          <div class="name-info-meal">
+            <h3>
+              {{ meal.name }}
+            </h3>
+            <small>{{ meal.description }}</small>
+          </div>
+          <p class="price">
+            {{
+              meal.price|format_currency(
+                'USD',
+                {
+                  decimal_always_shown: 2
+                }
+              )
+            }}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="dessert">
+      <h2>
+        Desserts
+      </h2>
+      <hr />
+      {% for dessert in desserts %}
+        <article class="recipe">
+          <img src="/assets/{{ dessert.picture }}"
+            alt="healthy food"
+            class="menu-img" />
+          <div class="name-info-meal">
+            <h3>
+              {{ dessert.name }}
+            </h3>
+            <small>{{ dessert.description }}</small>
+          </div>
+          <p class="price">
+            {{
+              dessert.price|format_currency(
+                'USD',
+                {
+                  decimal_always_shown: 2
+                }
+              )
+            }}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
